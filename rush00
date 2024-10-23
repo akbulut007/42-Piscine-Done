@@ -1,0 +1,53 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    rush00                                             :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: muhakbul <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/10/08 14:47:55 by muhakbul          #+#    #+#              #
+#    Updated: 2024/10/08 14:54:10 by muhakbul         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+void    ft_putchar(char l);
+
+void    draw_corners(int h, int v, int x, int y)
+{
+    if (v == (y - 1) && h == (x - 1) && (x != 1))
+        ft_putchar('o');
+    else if (v == 0 && h == (x - 1) && (x != 1))
+        ft_putchar('o');
+    else if ((h == 0 && v == 0) || (h == (x - 1) && v == (y - 1)))
+        ft_putchar('o');
+    else if ((h == 0 && v == (y - 1)) || (h == (x - 1) && v == 0))
+        ft_putchar('o');
+    else
+        ft_putchar('-');
+}
+void    draw_line(int x, int v, int y)
+{
+    int h;
+    h = 0;
+    while (h < x)
+    {
+        if (v == 0 || v == (y - 1))
+            draw_corners(h, v, x, y);
+        else if (h == 0 || h == (x - 1))
+            ft_putchar('|');
+        else
+            ft_putchar(' ');
+        h++;
+    }
+    ft_putchar('\n');
+}
+void    rush(int x, int y)
+{
+    int v;
+    v = 0;
+    while (v < y)
+    {
+        draw_line(x, v, y);
+        v++;
+    }
+}
