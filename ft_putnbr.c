@@ -1,25 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muhakbul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/14 16:03:33 by muhakbul          #+#    #+#             */
-/*   Updated: 2024/10/16 16:01:34 by muhakbul         ###   ########.fr       */
+/*   Created: 2024/10/14 16:04:08 by muhakbul          #+#    #+#             */
+/*   Updated: 2024/10/16 16:02:09 by muhakbul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putstr(char *str)
+void	ft_putchar(char c)
 {
-	while (*str)
-		write(1, str++, 1);
+	write(1, &c, 1);
 }
-/*int	main(void)
+
+void	ft_putnbr(int nb)
 {
-	char *Merhaba = "Merhaba";
-	ft_putstr(Merhaba);
-	return (0);
+	if (nb == -2147483648)
+	{
+		write(1, "-2147483648", 11);
+		return ;
+	}
+	else if (nb < 0)
+	{
+		ft_putchar('-');
+		ft_putnbr(-nb);
+	}
+	else if (nb > 9)
+	{
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
+	}
+	else
+	{
+		ft_putchar('0' + nb);
+	}
+}
+/*int main(void)
+{
+    int test = -2147483648;
+    ft_putnbr(test);
 }*/
