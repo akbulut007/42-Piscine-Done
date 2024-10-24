@@ -5,23 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: muhakbul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/12 15:08:20 by muhakbul          #+#    #+#             */
-/*   Updated: 2024/10/13 16:00:05 by muhakbul         ###   ########.fr       */
+/*   Created: 2024/10/24 19:00:23 by muhakbul          #+#    #+#             */
+/*   Updated: 2024/10/24 19:01:40 by muhakbul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-char	*ft_strcpy(char *dest, char *src)
+char    *ft_strcpy(char *s1, char *s2)
 {
-	int	i;
-
-	i = 0;
-	while (src[i] != '\0')
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
+	while((*s1++ = *s2++));
+	return(s1);
 }

@@ -1,25 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   putstr.c                                           :+:      :+:    :+:   */
+/*   repeat.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muhakbul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 18:49:32 by muhakbul          #+#    #+#             */
-/*   Updated: 2024/10/23 18:49:34 by muhakbul         ###   ########.fr       */
+/*   Created: 2024/10/23 17:41:27 by muhakbul          #+#    #+#             */
+/*   Updated: 2024/10/23 18:15:37 by muhakbul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putstr(char *str)
+int main(int ac, char **av)
 {
 	int i = 0;
 	
-	while(str[i] != '\0')
+	int rep;
+	int c;
+
+	if(ac == 2)
 	{
-		write(1, &str[i], 1);
-	i++;
+		while(av[1][i])
+		{
+			c = av[1][i];
+			if((c >= 'a' && c <= 'z' && c >= 'A' && c <= 'Z'))
+			{
+				if(c >= 'a' && c <= 'z')
+					rep = c - 'a';
+				if(c >= 'A' && c <= 'Z')
+					rep = c - 'A';
+				while(rep > 0)
+				{
+					write(1, &c, 1);
+					rep--;
+				}
+				write(1, &c, 1);
+				i++;
+			}
+		write(1, "\n", 1);
+		return(0);
 	}
 }
-
